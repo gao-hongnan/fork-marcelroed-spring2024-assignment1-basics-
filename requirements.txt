@@ -1,0 +1,7 @@
+regex
+torch==2.2.2
+numpy
+maturin
+wandb
+einops
+tqdm

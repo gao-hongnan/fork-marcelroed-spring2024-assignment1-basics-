@@ -1,0 +1,35 @@
+[project]
+name = "spring2024-assignment1-basics"
+version = "0.1.0"
+description = "Assignment 1 for CS336 at Stanford"
+authors = ["Marcel Rød <marcelroed@gmail.com>"]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[system-requirements]
+linux = "5.4.0"
+
+[tasks]
+build = "(cd rustsrc && maturin develop --release)"
+train = { cmd = "PYTHONPATH=. python cs336_basics/training_loop.py", depends_on="build" }
+test = { cmd = "PYTHONPATH=. pytest tests", depends_on="build" }
+
+[build-dependencies]
+rust = "*"
+rust-src = "*"
+
+[dependencies]
+python = "3.11.*"
+pip = "*"
+
+[pypi-dependencies]
+torch = ">=2.2.2"
+tiktoken = "*"
+psutil = "*"
+regex = "*"
+numpy = "*"
+maturin = "*"
+pytest = "*"
+patchelf = "*"
+einops = "*"
+wandb = "*"
